@@ -28,3 +28,4 @@ placeInput.addEventListener('input', debounce(function() {
 		}
 	});
 }, 500));
+
