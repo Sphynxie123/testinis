@@ -5,7 +5,10 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
-const weatherRouter = require('./routes/api/v1/weather');
+const placesWeatherRouter = require('./routes/api/v1/weather');
+const placesWeather = require('./routes/api/v1/placesWeather');
+
+
 
 const app = express();
 
@@ -17,6 +20,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/api/v1/weather', weatherRouter);
+app.use('/api/v1/weather', placesWeatherRouter);
+app.use('/api/v1/weather', placesWeather);
+
 
 module.exports = app;

@@ -2,11 +2,13 @@ import debounce from 'lodash.debounce';
 
 const placeInput = document.querySelector('#place');
 const placeSuggestions = document.querySelector('#place-suggestions');
+const placeTemperature = document.querySelector('#placeTemperature');
+
 
 placeInput.addEventListener('input', debounce(function() {
 	fetch(`/api/v1/weather/places/find/${this.value}`).then(r => r.json()).then(places => {
 		placeSuggestions.innerHTML = '';
-
+		placeTemperature.value = placeInput.value;
 		for (let place of places) {
 			let button = document.createElement('button');
 
@@ -28,4 +30,9 @@ placeInput.addEventListener('input', debounce(function() {
 		}
 	});
 }, 500));
+
+
+
+
+
 
